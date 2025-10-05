@@ -5,10 +5,13 @@ const SectionTwo = () => {
   return (
     <div className="w-screen h-screen">
       {/* Introduction */}
- 
-      <h1 className='font-semibold text-8xl md:text-[10em] md:leading-30 xl:text-[23em] xl:leading-65' >
-          PAGE 3
-          </h1>
+      <div className="flex flex-col justify-end items-end pr-20 h-full">
+              <h1 className='font-semibold text-3xl md:text-[7em] md:leading-30 xl:text-[10em] xl:leading-30' >
+              Pancake <br /> & Milshake
+              </h1>
+              <p className="text-lg">Textures, reflets, et crème virtuelle. Miam. 👩</p>
+      </div>
+
 
     </div>
   );

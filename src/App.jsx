@@ -19,8 +19,6 @@ function App() {
     const lenis = new Lenis({
       duration: 1.2,
       smooth: true,
-      direction: "vertical",
-      gestureDirection: "vertical",
     });
 
     function raf(time) {
@@ -59,7 +57,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <div id="parallax" className="flex no-wrap w-[400%]" ref={refContainer}>
+      <div id="parallax" className="flex no-wrap w-[500%]" ref={refContainer}>
         {/* ✅ Chaque section dans un vrai <section className="panel"> */}
         <section className="panel">
           <Hero />

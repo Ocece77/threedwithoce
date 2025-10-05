@@ -6,9 +6,13 @@ const SectiontThree = () => {
     <div className="w-screen h-screen">
       {/* Introduction */}
  
-      <h1 className='font-semibold text-8xl md:text-[10em] md:leading-30 xl:text-[23em] xl:leading-65' >
-          PAGE 1
+      <h1 className='font-semibold text-5xl md:text-[7em] md:leading-30 xl:text-[15em] xl:leading-20' >
+          Pillules
           </h1>
+          <p className="text-lg font-mono">
+            Des pilules 3D qui flottent. Juste pour le fun et les shaders 
+          </p>
+
 
     </div>
   );
