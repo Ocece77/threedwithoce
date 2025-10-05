@@ -19,15 +19,15 @@ export default function ThreeScene() {
       mountRef.current.clientWidth,
       mountRef.current.clientHeight
     );
+    renderer.setClearColor(0x000000, 0); // 2ᵉ paramètre = alpha (0 → totalement transparent)
     mountRef.current.appendChild(renderer.domElement);
-
     // === OBJETS ===
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const geometry = new THREE.BoxGeometry(3, 1, 2);
+    const material = new THREE.MeshBasicMaterial({ color: 0x007700 });
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
-    camera.position.z = 5;
+    camera.position.z = 3;
 
     // === ANIMATION ===
     const animate = () => {
@@ -52,7 +52,11 @@ export default function ThreeScene() {
   return (
     <div
       ref={mountRef}
-      style={{backgroundColor:"pink", width: "100vw", height: "100vh", overflow: "hidden" }}
+      style={{
+        width: "100vw",
+        height: "100vh",
+        overflow: "hidden",
+      }}
     />
   );
 }
