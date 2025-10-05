@@ -10,3 +10,8 @@
   --color-bakermiller-pink: #ff8fabff;
   --color-pompadour: #fb6f92ff;
 }
+
+html, body{
+  width:100%;
+  height:100%;
+}

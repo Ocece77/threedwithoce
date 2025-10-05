@@ -2,7 +2,7 @@ import React from 'react'
 
 const Hero = () => {
   return (
-    <div className='flex w-screen h-screen '>
+    <div className='flex w-screen h-screen'>
 
       {/*Title*/}
       <div className='flex gap-10 w-full flex-col items-center justify-center '>

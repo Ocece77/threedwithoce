@@ -6,33 +6,82 @@ import gsap from "gsap";
 import SectionOne from "./components/sections/section1/SectionOne";
 import Hero from "./components/sections/hero/Hero";
 import Intro from "./components/sections/introduction/Intro";
+import SectionTwo from "./components/sections/section2/SectionTwo";
+import SectionThree from "./components/sections/section3/SectionThree";
+import { useGSAP } from "@gsap/react";
+import { useEffect, useRef } from "react";
 
 function App() {
-  // Initialize a new Lenis instance for smooth scrolling
-  const lenis = new Lenis();
+  const refContainer = useRef(null);
 
-  // Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
-  lenis.on("scroll", ScrollTrigger.update);
+  // ✅ Initialise Lenis UNE SEULE FOIS
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      smooth: true,
+      direction: "vertical",
+      gestureDirection: "vertical",
+    });
 
-  // Add Lenis's requestAnimationFrame (raf) method to GSAP's ticker
-  // This ensures Lenis's smooth scroll animation updates on each GSAP tick
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000); // Convert time from seconds to milliseconds
-  });
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
 
-  // Disable lag smoothing in GSAP to prevent any delay in scroll animations
-  gsap.ticker.lagSmoothing(0);
+    lenis.on("scroll", ScrollTrigger.update);
+    requestAnimationFrame(raf);
+
+    return () => lenis.destroy();
+  }, []);
+
+  // ✅ Active GSAP ScrollTrigger pour l’effet horizontal
+  useGSAP(() => {
+    if (!refContainer.current) return;
+
+    const panels = gsap.utils.toArray(".panel");
+    if (!panels.length) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(panels, {
+      xPercent: -100 * (panels.length - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: refContainer.current,
+        pin: true,
+        scrub: 1,
+        snap: 1 / (panels.length - 1),
+        end: () => "+=" + refContainer.current.offsetWidth,
+      },
+    });
+  }, []);
 
   return (
     <>
-      {/*main div */}
-      <div>
-        <Navbar />
-        <Hero/>
-        <Intro/>
-        <SectionOne />
-        <Footer />
+      <Navbar />
+      <div id="parallax" className="flex no-wrap w-[400%]" ref={refContainer}>
+        {/* ✅ Chaque section dans un vrai <section className="panel"> */}
+        <section className="panel">
+          <Hero />
+        </section>
+
+        <section className="panel">
+          <Intro />
+        </section>
+
+        <section className="panel">
+          <SectionOne />
+        </section>
+
+        <section className="panel">
+          <SectionTwo />
+        </section>
+
+        <section className="panel">
+          <SectionThree />
+        </section>
       </div>
+      <Footer />
     </>
   );
 }
