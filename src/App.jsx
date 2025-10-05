@@ -4,6 +4,8 @@ import Navbar from "./components/navigations/Navbar";
 import Lenis from "lenis";
 import gsap from "gsap";
 import SectionOne from "./components/sections/section1/SectionOne";
+import Hero from "./components/sections/hero/Hero";
+import Intro from "./components/sections/introduction/Intro";
 
 function App() {
   // Initialize a new Lenis instance for smooth scrolling
@@ -26,6 +28,8 @@ function App() {
       {/*main div */}
       <div>
         <Navbar />
+        <Hero/>
+        <Intro/>
         <SectionOne />
         <Footer />
       </div>

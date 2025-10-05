@@ -2,3 +2,11 @@
 @plugin "daisyui" {
   themes: light --default;
 }
+
+@theme{
+  --color-mistyrose: #ffe5ecff;
+  --color-pink: #ffc2d1ff;
+  --color-cherry-blossom-pink: #ffb3c6ff;
+  --color-bakermiller-pink: #ff8fabff;
+  --color-pompadour: #fb6f92ff;
+}
